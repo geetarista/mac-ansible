@@ -1,0 +1,228 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: false # comment out if you need facts
+
+  vars:
+    brew_packages:
+      - name: ack
+      - name: bazaar
+      - name: ctags
+      - name: curl
+      - name: findutils
+      - name: git
+      - name: gnu-tar
+      - name: go
+        install_options: cross-compile-all
+      - name: graphviz
+      - name: highlight
+      - name: hub
+      - name: jq
+      - name: lua
+      - name: macvim
+        install_options: override-system-vim,with-cscope,with-lua
+      - name: mercurial
+      - name: nodejs
+      - name: python
+      - name: rbenv
+      - name: redis
+      - name: ruby-build
+      - name: s3cmd
+      - name: scons
+      - name: sqlite
+      - name: the_platinum_searcher
+      - name: the_silver_searcher
+      - name: tmux
+      - name: tree
+      - name: visionmedia-watch
+      - name: wget
+    brew_taps:
+      - monochromegane/pt
+    cask_applications:
+      # - 1password
+      - adium
+      # - airmail
+      # - alfred
+      - appcleaner
+      - arduino
+      - atom
+      - caffeine
+      - cloud
+      - daisydisk
+      - dropbox
+      - evernote
+      - flux
+      - google-chrome
+      - handbrake
+      - heroku-toolbelt
+      - hipchat
+      - istat-menus
+      - iterm2
+      - java
+      - keyboard-cleaner
+      - mplayerx
+      - rdio
+      - slack
+      # - textual
+      # - twitter
+      - the-unarchiver
+      - vagrant
+      - virtualbox
+      # - viscosity
+      - vlc
+      # - vmware
+      # - wunderlist
+      # - xscope
+    gopath: "{{ lookup('env','GOPATH') }}" 
+    go_packages:
+      - github.com/bradfitz/goimports
+      - github.com/garyburd/redigo/redis
+      - github.com/golang/lint
+      - github.com/mitchellh/gox
+      - github.com/mitchellh/packer
+    home: "{{ lookup('env','HOME') }}"
+    macvim_icon_checksum: 'bf7f52d27687743254cf0b31bb27c8ce'
+    macvim_icons:
+      - MacVim.icns
+      - MacVim-generic.icns
+    npm_packages:
+      - coffee-script
+    python_packages:
+      - boto
+    ruby_current_global: "{{ lookup('file', home + '/.rbenv/version') }}"
+    ruby_gems:
+      - jekyll
+    ruby_global: 2.1.1
+    ruby_versions:
+      - 2.0.0-p481
+      - 2.1.1
+    workspace: "{{ home }}/workspace"
+
+  tasks:
+    - name: install homebrew-cask
+      command: brew install caskroom/cask/brew-cask
+               creates=/usr/local/bin/brew-cask.rb
+
+    - name: brew taps
+      homebrew_tap: tap={{ item }}
+      with_items: brew_taps
+
+    - name: brew packages
+      homebrew: "name={{ item.name }} install_options={{ item.install_options | default('') }}"
+      with_items: brew_packages
+
+    - name: cask applications
+      homebrew_cask: name={{ item }}
+      with_items: cask_applications
+
+    - name: brew linkapps
+      command: brew linkapps
+
+    - name: alfred status
+      command: brew cask alfred status
+      ignore_errors: true
+      register: alfred_status
+
+    - name: link alfred
+      command: brew cask alfred link
+      when: alfred_status.stdout == "==> Alfred is not linked to homebrew-cask."
+
+    # ssh
+
+    - name: ssh dir
+      file: path={{ home }}/.ssh state=directory
+
+    # workspace
+
+    - name: workspace
+      file: path={{ workspace }} state=directory
+
+    - name: stat dotfiles
+      stat: path={{ workspace }}/dotfiles
+      register: dotfiles
+
+    - name: dotfiles
+      git: repo="https://github.com/geetarista/dotfiles.git"
+           dest={{ workspace }}/dotfiles
+      when: not dotfiles.stat.exists
+
+    - name: dotfiles install
+      command: "{{ workspace }}/dotfiles/install creates={{ home }}/.dotfiles_installed"
+
+    - name: stat vimfiles
+      stat: path={{ workspace }}/vimfiles
+      register: vimfiles
+
+    - name: vimfiles
+      git: repo="https://github.com/geetarista/vimfiles.git"
+           dest={{ workspace }}/vimfiles
+      when: not vimfiles.stat.exists
+
+    - name: vimfiles install
+      command: "{{ workspace }}/vimfiles/install creates={{ home }}/.vimfiles_installed"
+
+    # macvim
+
+    - name: check generic icon
+      shell: /bin/test "`md5 /Applications/MacVim.app/Contents/Resources/{{item}}`" = "MD5 (/Applications/MacVim.app/Contents/Resources/{{item}}) = {{macvim_icon_checksum}}"
+      ignore_errors: true
+      with_items: macvim_icons
+      register: generic_icon
+
+    - name: copy generic icon
+      command: cp {{ home }}/Dropbox/system/{{ item }} /Applications/MacVim.app/Contents/Resources/{{ item }}
+      with_items: macvim_icons
+      when: generic_icon|failed
+
+    # go
+
+    - name: gocode
+      file: path={{ home }}/gocode state=directory
+
+    - name: get go packages
+      command: go get {{ item }} creates={{ gopath }}/src/{{item}}
+      with_items: go_packages
+
+    # python
+
+    - name: python packages
+      pip: name={{ item }}
+      with_items: python_packages
+
+    # ruby
+
+    - name: ruby versions
+      command: rbenv install {{ item }} creates={{ home }}/.rbenv/versions/{{ item }}
+      with_items: ruby_versions
+
+    - name: set global ruby version
+      command: rbenv global {{ ruby_global }}
+      when: ruby_current_global != ruby_global
+
+    - name: ruby gems
+      gem: name={{ item }}
+      with_items: ruby_gems
+
+    # nodejs/npm
+
+    - name: npm packages
+      npm: name={{ item }} global=true
+      with_items: npm_packages
+
+    - name: stat library
+      shell: "ls -lO {{ home }} | grep Library$ | grep -s hidden | tail -n 1"
+      ignore_errors: true
+      register: library
+      tags: stat
+
+    - name: show library
+      command: chflags nohidden {{ home }}/Library
+      when: library.stdout != ""
+      tags: stat
+
+    # os x defaults
+
+    # - name: autohide dock
+    #   osx_defaults: domain='com.apple.dock' key='autohide' value='true'
+    #   tags: defaults
