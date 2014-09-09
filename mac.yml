@@ -8,6 +8,7 @@
     brew_packages:
       - name: ack
       - name: bazaar
+      - name: boot2docker
       - name: ctags
       - name: curl
       - name: findutils
