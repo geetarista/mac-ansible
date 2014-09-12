@@ -74,12 +74,19 @@
       # - wunderlist
       # - xscope
     gopath: "{{ lookup('env','GOPATH') }}" 
-    go_packages:
+    go_get_packages:
+      - code.google.com/p/go.tools/cmd/cover
+      - code.google.com/p/go.tools/cmd/godoc
+      - code.google.com/p/go.tools/cmd/vet
       - github.com/bradfitz/goimports
       - github.com/garyburd/redigo/redis
       - github.com/golang/lint
       - github.com/mitchellh/gox
       - github.com/mitchellh/packer
+      - github.com/spf13/hugo
+    go_install_packages:
+      - github.com/mitchellh/gox
+      - github.com/spf13/hugo
     home: "{{ lookup('env','HOME') }}"
     macvim_icon_checksum: 'bf7f52d27687743254cf0b31bb27c8ce'
     macvim_icons:
@@ -180,8 +187,12 @@
       file: path={{ home }}/gocode state=directory
 
     - name: get go packages
-      command: go get {{ item }} creates={{ gopath }}/src/{{item}}
-      with_items: go_packages
+      command: go get -u {{ item }} creates={{ gopath }}/src/{{item}}
+      with_items: go_get_packages
+
+    - name: get install packages
+      command: go install {{ item }} creates={{ gopath }}/bin/{{item}}
+      with_items: go_install_packages
 
     # python
 
