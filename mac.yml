@@ -96,6 +96,7 @@
       - coffee-script
     python_packages:
       - boto
+      - uncommitted
     ruby_current_global: "{{ lookup('file', home + '/.rbenv/version') }}"
     ruby_gems:
       - jekyll
