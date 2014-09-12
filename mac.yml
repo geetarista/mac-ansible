@@ -65,8 +65,6 @@
       - mplayerx
       - rdio
       - slack
-      # - textual
-      # - twitter
       - the-unarchiver
       - vagrant
       - virtualbox
