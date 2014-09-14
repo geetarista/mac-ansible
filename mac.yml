@@ -41,10 +41,8 @@
     brew_taps:
       - monochromegane/pt
     cask_applications:
-      # - 1password
       - adium
-      # - airmail
-      # - alfred
+      - alfred
       - appcleaner
       - arduino
       - atom
@@ -63,16 +61,15 @@
       - java
       - keyboard-cleaner
       - mplayerx
+      - onepassword
       - rdio
       - slack
       - the-unarchiver
       - vagrant
       - virtualbox
-      # - viscosity
       - vlc
-      # - vmware
-      # - wunderlist
-      # - xscope
+      - wireshark
+      - xscope
     gopath: "{{ lookup('env','GOPATH') }}" 
     go_get_packages:
       - code.google.com/p/go.tools/cmd/cover
