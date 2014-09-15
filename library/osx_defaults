@@ -11,95 +11,85 @@ from ansible.module_utils.splitter import *
 
 DOCUMENTATION = '''
 ---
-module: command
+module: osx_defaults
 version_added: historical
-short_description: Executes a command on a remote node
+short_description: Uses Mac OS X defaults command to change settings
 description:
-     - The M(command) module takes the command name followed by a list of space-delimited arguments.
-     - The given command will be executed on all selected nodes. It will not be
-       processed through the shell, so variables like C($HOME) and operations
-       like C("<"), C(">"), C("|"), and C("&") will not work (use the M(shell)
-       module if you need these features).
+     - Write or delete defaults
+     - Read defaults to create a list
 options:
-  free_form:
+  host:
     description:
-      - the command module takes a free form command to run.  There is no parameter actually named 'free form'.
-        See the examples!
+      - The hostname to apply options to.
     required: true
-    default: null
+    default: currentHost
     aliases: []
-  creates:
+  domain:
     description:
-      - a filename, when it already exists, this step will B(not) be run.
-    required: no
-    default: null
-  removes:
+      - The state of the key
+      - domain is ( <domain_name> | -app <application_name> | -globalDomain )
+         or a path to a file omitting the '.plist' extension
+    required: true
+    default: present
+    aliases: []
+  key:
     description:
-      - a filename, when it does not exist, this step will B(not) be run.
-    version_added: "0.8"
-    required: no
-    default: null
-  chdir:
+      - The state of the key
+    required: true
+    default: present
+    aliases: []
+  type:
     description:
-      - cd into this directory before running the command
-    version_added: "0.6"
-    required: false
-    default: null
-  executable:
+      - The type of value
+    required: true
+    default: None
+    aliases: []
+  value:
     description:
-      - change the shell used to execute the command. Should be an absolute path to the executable.
-    required: false
-    default: null
-    version_added: "0.9"
-  warn:
-    version_added: "1.8"
-    default: yes
+      - The state of the key
+    required: true
+    default: present
+    aliases: []
+  state:
     description:
-      - if command warnings are on in ansible.cfg, do not warn about this particular line if set to no/false.
-    required: false
-    default: True
+      - The state of the key
+    required: true
+    default: present
+    aliases: []
 notes:
-    -  If you want to run a command through the shell (say you are using C(<),
-       C(>), C(|), etc), you actually want the M(shell) module instead. The
-       M(command) module is much more secure as it's not affected by the user's
-       environment.
-    -  " C(creates), C(removes), and C(chdir) can be specified after the command. For instance, if you only want to run a command if a certain file does not exist, use this."
-author: Michael DeHaan
+    -  This is awesome.
+author: Robby Colvin
 '''
 
 EXAMPLES = '''
-# Example from Ansible Playbooks.
-- command: /sbin/shutdown -t now
+- osx_defaults: domain=com.apple.dock key=autohide value=true
 
-# Run the command if the specified file does not exist.
-- command: /usr/bin/make_database.sh arg1 arg2 creates=/path/to/database
-
-# You can also use the 'args' form to provide the options. This command
-# will change the working directory to somedir/ and will only run when
-# /path/to/database doesn't exist.
-- command: /usr/bin/make_database.sh arg1 arg2
-  args:
-    chdir: somedir/
-    creates: /path/to/database
+- osx_defaults: domain=com.apple.dock key=autohide state=absent
 '''
+
+TYPE_CHOICES=[
+    'bool',
+    'data',
+    'dict',
+    'int',
+    'float',
+    'string',
+]
+
+def run():
+    pass
 
 def main():
     executable = '/usr/bin/defaults'
 
     module = AnsibleModule(
         argument_spec = dict(
-            host = dict(default='currentHost'),
-            domain = dict(default='globalDomain'),
+            host = dict(default='-currentHost'),
+            domain = dict(default='-globalDomain'),
             key = dict(default=None),
+            type = dict(choices=TYPE_CHOICES, default=None),
             value = dict(default=None),
             state = dict(choices=['present','absent'], default='present'),
-            # path  = dict(aliases=['dest', 'name'], required=True),
-            # original_basename = dict(required=False), # Internal use only, for recursive ops
-            # recurse  = dict(default='no', type='bool'),
-            # force = dict(required=False,default=False,type='bool'),
-            # diff_peek = dict(default=None),
-            # validate = dict(required=False, default=None),
-            # src = dict(required=False, default=None),
         ),
         add_file_common_args=True,
         supports_check_mode=True
@@ -112,12 +102,37 @@ def main():
     value  = params['value']
     state  = params['state']
 
-    args = []
+    args = ['/usr/bin/defaults']
 
-    if host != '' || host != 'currentHost':
-        args.append(['-host', host])
+    if host != 'currentHost':
+        args.append('-host')
+
+    args.append(host)
 
     if state == 'present':
+        check_cmd = ' '.join(args) + ' read ' + domain + ' ' + key
+        startd = datetime.datetime.now()
+        rc, out, err = module.run_command(check_cmd)
+        endd = datetime.datetime.now()
+        delta = endd - startd
+
+        if out is None:
+            out = ''
+        if err is None:
+            err = ''
+
+        if out.rstrip() == value:
+            module.exit_json(
+                cmd      = check_cmd,
+                stdout   = out.rstrip("\r\n"),
+                stderr   = err.rstrip("\r\n"),
+                rc       = rc,
+                start    = str(startd),
+                end      = str(endd),
+                delta    = str(delta),
+                changed  = True,
+            )
+
         cmd = 'write'
     else:
         cmd = 'read'
@@ -130,10 +145,11 @@ def main():
     args.append(key)
 
     if value and state == 'present':
+        # if value in ['true', ]
         args.append(value)
 
     startd = datetime.datetime.now()
-    rc, out, err = module.run_command(args, executable=executable)
+    rc, out, err = module.run_command(' '.join(args))
     endd = datetime.datetime.now()
     delta = endd - startd
 

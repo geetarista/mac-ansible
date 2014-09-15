@@ -39,6 +39,7 @@
       - name: visionmedia-watch
       - name: wget
     brew_taps:
+      - caskroom/versions
       - monochromegane/pt
     cask_applications:
       - adium
@@ -46,28 +47,54 @@
       - appcleaner
       - arduino
       - atom
+      - authy-bluetooth
+      - bittorrent-sync
       - caffeine
+      - cakebrew
       - cloud
       - daisydisk
       - dropbox
       - evernote
       - flux
+      - gifrocket
       - google-chrome
+      - google-chrome-canary
+      - google-earth
       - handbrake
       - heroku-toolbelt
       - hipchat
-      - istat-menus
+      - hive
       - iterm2
       - java
       - keyboard-cleaner
+      - kitematic
+      - lighttable
+      - liteicon
+      - mailbox
+      - macdown
+      - meteorologist
       - mplayerx
+      - namebench
+      - omnigraffle
       - onepassword
+      - origin
+      - playonmac
       - rdio
+      - silverlight
+      - skype
       - slack
+      - slate
+      - steam
       - the-unarchiver
+      - torbrowser
+      - tunnelbear
+      - utorrent
       - vagrant
+      - vimr
       - virtualbox
+      - viscosity
       - vlc
+      - wineskin-winery
       - wireshark
       - xscope
     gopath: "{{ lookup('env','GOPATH') }}" 
@@ -80,10 +107,14 @@
       - github.com/golang/lint
       - github.com/mitchellh/gox
       - github.com/mitchellh/packer
+      - github.com/shurcooL/Go-Package-Store
+      - github.com/smartystreets/goconvey
       - github.com/spf13/hugo
     go_install_packages:
-      - github.com/mitchellh/gox
-      - github.com/spf13/hugo
+      - name: gox
+        source: github.com/mitchellh/gox
+      - name: hugo
+        source: github.com/spf13/hugo
     home: "{{ lookup('env','HOME') }}"
     macvim_icon_checksum: 'bf7f52d27687743254cf0b31bb27c8ce'
     macvim_icons:
@@ -93,6 +124,8 @@
       - coffee-script
     python_packages:
       - boto
+      - pep8
+      - pyflakes
       - uncommitted
     ruby_current_global: "{{ lookup('file', home + '/.rbenv/version') }}"
     ruby_gems:
@@ -184,12 +217,12 @@
     - name: gocode
       file: path={{ home }}/gocode state=directory
 
-    - name: get go packages
+    - name: go get packages
       command: go get -u {{ item }} creates={{ gopath }}/src/{{item}}
       with_items: go_get_packages
 
-    - name: get install packages
-      command: go install {{ item }} creates={{ gopath }}/bin/{{item}}
+    - name: go install packages
+      command: go install {{ item.source }} creates={{ gopath }}/bin/{{ item.name }}
       with_items: go_install_packages
 
     # python
@@ -231,6 +264,10 @@
 
     # os x defaults
 
-    # - name: autohide dock
-    #   osx_defaults: domain='com.apple.dock' key='autohide' value='true'
-    #   tags: defaults
+    - name: autohide dock
+      osx_defaults: domain='com.apple.dock' key='autohide' value='true'
+      tags: defaults
+
+    - name: set delete as safari back button
+      osx_defaults: domain='com.apple.safari' key='ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled' value='true'
+      tags: defaults
