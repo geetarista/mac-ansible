@@ -97,6 +97,10 @@
       - wineskin-winery
       - wireshark
       - xscope
+    # Just look here to get the current version when installing
+    # https://developers.google.com/appengine/downloads
+    go_appengine_version: 1.9.11
+    go_appengine_url: "https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_darwin_amd64-{{ go_appengine_version }}.zip"
     gopath: "{{ lookup('env','GOPATH') }}" 
     go_get_packages:
       - code.google.com/p/go.tools/cmd/cover
@@ -216,14 +220,39 @@
 
     - name: gocode
       file: path={{ home }}/gocode state=directory
+      tags: go
 
     - name: go get packages
       command: go get -u {{ item }} creates={{ gopath }}/src/{{item}}
       with_items: go_get_packages
+      tags: go
 
     - name: go install packages
       command: go install {{ item.source }} creates={{ gopath }}/bin/{{ item.name }}
       with_items: go_install_packages
+      tags: go
+
+    - name: stat appengine sdk
+      stat: path="{{ home }}/go_appengine"
+      register: appengine
+      tags: go
+
+    - name: check appengine version
+      debug: "msg={{ lookup('file', home + '/go_appengine/VERSION') | match('^release: \"' + go_appengine_version + '\"') }}"
+      ignore_errors: True
+      register: appengine_current
+      when: appengine.stat.exists
+      tags: go
+
+    - name: download appengine sdk
+      get_url: url={{ go_appengine_url }} dest="/tmp/go_appengine.zip"
+      when: not appengine_current or not appengine.stat.exists
+      tags: go
+
+    - name: unarchive appengine sdk
+      unarchive: src="/tmp/go_appengine.zip" dest="{{ home }}/"
+      when: not appengine_current or not appengine.stat.exists
+      tags: go
 
     # python
 
