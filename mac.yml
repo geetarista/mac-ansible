@@ -24,6 +24,7 @@
       - name: macvim
         install_options: override-system-vim,with-cscope,with-lua
       - name: mercurial
+      - name: moreutils
       - name: nodejs
       - name: python
       - name: rbenv
