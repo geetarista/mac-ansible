@@ -101,7 +101,7 @@
       - xscope
     # Just look here to get the current version when installing
     # https://developers.google.com/appengine/downloads
-    go_appengine_version: 1.9.11
+    go_appengine_version: 1.9.12
     go_appengine_url: "https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_darwin_amd64-{{ go_appengine_version }}.zip"
     gopath: "{{ lookup('env','GOPATH') }}" 
     go_get_packages:
