@@ -62,6 +62,7 @@
       - google-chrome
       - google-chrome-canary
       - google-earth
+      - gpgtools
       - handbrake
       - heroku-toolbelt
       - hipchat
