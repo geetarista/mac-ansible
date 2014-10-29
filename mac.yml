@@ -8,7 +8,7 @@
     brew_packages:
       - name: ack
       - name: bazaar
-      - name: boot2docker
+      # - name: boot2docker
       - name: ctags
       - name: curl
       - name: findutils
@@ -44,63 +44,63 @@
       - caskroom/versions
       - monochromegane/pt
     cask_applications:
-      - adium
+      # - adium
       - alfred
       - appcleaner
-      - arduino
-      - atom
-      - authy-bluetooth
-      - bittorrent-sync
+      # - arduino
+      # - atom
+      # - authy-bluetooth
+      # - bittorrent-sync
       - caffeine
-      - cakebrew
-      - cloud
+      # - cakebrew
+      # - cloud
       - daisydisk
       - dropbox
-      - evernote
-      - firefox-beta
+      # - evernote
+      # - firefox-beta
       - flux
-      - gifrocket
+      # - gifrocket
       - google-chrome
-      - google-chrome-canary
-      - google-earth
+      # - google-chrome-canary
+      # - google-earth
       - gpgtools
-      - handbrake
-      - heroku-toolbelt
-      - hipchat
-      - hive
+      # - handbrake
+      # - heroku-toolbelt
+      # - hipchat
+      # - hive
       - iterm2
       - java
       - keyboard-cleaner
-      - kitematic
-      - lighttable
-      - liteicon
-      - mailbox
-      - macdown
-      - meteorologist
+      # - kitematic
+      # - lighttable
+      # - liteicon
+      # - mailbox
+      # - macdown
+      # - meteorologist
       - mplayerx
-      - namebench
-      - omnigraffle
+      # - namebench
+      # - omnigraffle
       - onepassword
-      - origin
-      - playonmac
+      # - origin
+      # - playonmac
       - rdio
-      - silverlight
-      - skype
+      # - silverlight
+      # - skype
       - slack
-      - slate
-      - steam
+      # - slate
+      # - steam
       - the-unarchiver
-      - torbrowser
-      - tunnelbear
-      - utorrent
-      - vagrant
-      - vimr
-      - virtualbox
-      - viscosity
-      - vlc
-      - wineskin-winery
-      - wireshark
-      - xscope
+      # - torbrowser
+      # - tunnelbear
+      # - utorrent
+      # - vagrant
+      # - vimr
+      # - virtualbox
+      # - viscosity
+      # - vlc
+      # - wineskin-winery
+      # - wireshark
+      # - xscope
     # Just look here to get the current version when installing
     # https://developers.google.com/appengine/downloads
     gopath: "{{ lookup('env','GOPATH') }}" 
