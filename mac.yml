@@ -136,9 +136,8 @@
     ruby_current_global: "{{ lookup('file', home + '/.rbenv/version') }}"
     ruby_gems:
       - jekyll
-    ruby_global: 2.1.1
+    ruby_global: 2.1.4
     ruby_versions:
-      - 2.0.0-p481
       - "{{ ruby_global }}"
     workspace: "{{ home }}/workspace"
 
