@@ -214,7 +214,7 @@
       register: generic_icon
 
     - name: copy generic icon
-      command: cp {{ home }}/Dropbox/system/{{ item }} /Applications/MacVim.app/Contents/Resources/{{ item }}
+      command: cp ./files/macvim.icns /Applications/MacVim.app/Contents/Resources/{{ item }}
       with_items: macvim_icons
       when: generic_icon|failed
 
