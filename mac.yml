@@ -23,7 +23,7 @@
       - name: jq
       - name: lua
       - name: macvim
-        install_options: override-system-vim,with-cscope,with-lua
+        install_options: custom-icons,override-system-vim,with-cscope,with-lua,with-luajit
       - name: mercurial
       - name: moreutils
       - name: nodejs
@@ -38,6 +38,8 @@
       - name: the_silver_searcher
       - name: tmux
       - name: tree
+      - name: vim
+        install_options: override-system-vi,with-lua,with-luajit
       - name: visionmedia-watch
       - name: wget
     brew_taps:
@@ -142,6 +144,8 @@
     workspace: "{{ home }}/workspace"
 
   tasks:
+    # brew/cask
+
     - name: install homebrew-cask
       command: brew install caskroom/cask/brew-cask
                creates=/usr/local/bin/brew-cask.rb
