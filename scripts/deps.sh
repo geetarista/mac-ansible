@@ -11,7 +11,7 @@ echo "==> Installing dependencies..."
 
 if [ ! `which brew` ]; then
 	echo "==>   Installing homebrew..."
-    ruby -e "curl -fssl https://raw.github.com/homebrew/homebrew/go/install"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 if [ ! `which pip` ]; then
