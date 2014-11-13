@@ -105,8 +105,8 @@
       # - xscope
     # Just look here to get the current version when installing
     # https://developers.google.com/appengine/downloads
-    gopath: "{{ lookup('env','GOPATH') }}" 
-    go_get_packages:
+    gopath: "{{ lookup('env','GOPATH') }}"
+    go_packages:
       - github.com/bradfitz/goimports
       - github.com/garyburd/redigo/redis
       - github.com/golang/lint
@@ -115,12 +115,9 @@
       - github.com/shurcooL/Go-Package-Store
       - github.com/smartystreets/goconvey
       - github.com/spf13/hugo
-      - golang.org/x/tools/cmd
-    go_install_packages:
-      - name: gox
-        source: github.com/mitchellh/gox
-      - name: hugo
-        source: github.com/spf13/hugo
+      - golang.org/x/tools/cmd/cover
+      - golang.org/x/tools/cmd/godoc
+      - golang.org/x/tools/cmd/vet
     home: "{{ lookup('env','HOME') }}"
     macvim_icon_checksum: 'bf7f52d27687743254cf0b31bb27c8ce'
     macvim_icons:
@@ -226,13 +223,8 @@
       tags: go
 
     - name: go get packages
-      command: go get -u {{ item }} creates={{ gopath }}/src/{{item}}
-      with_items: go_get_packages
-      tags: go
-
-    - name: go install packages
-      command: go install {{ item.source }} creates={{ gopath }}/bin/{{ item.name }}
-      with_items: go_install_packages
+      command: go get -u {{ item }}
+      with_items: go_packages
       tags: go
 
     # python
