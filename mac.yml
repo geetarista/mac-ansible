@@ -227,6 +227,13 @@
       with_items: go_packages
       tags: go
 
+    # https://gist.github.com/bryanl/465a188d8495a2457fa8
+    - name: godoc launchctl config
+      copy: src=files/godoc.plist dest={{ home }}/Library/LaunchAgents
+
+    - name: godoc launchctl load
+      command: launchctl load {{ home }}/Library/LaunchAgents/godoc.plist
+
     # python
 
     - name: python packages
