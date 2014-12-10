@@ -235,6 +235,11 @@
     - name: godoc launchctl load
       command: launchctl load {{ home }}/Library/LaunchAgents/rcolvin.godoc.plist
 
+    # highlight
+
+    - name: twilight theme
+      copy: src=files/twilight.theme dest=/usr/local/opt/highlight/share/highlight/themes/
+
     # python
 
     - name: python packages

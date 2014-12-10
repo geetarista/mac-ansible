@@ -1,0 +1,22 @@
+
+Description="acolangelo Twilight"
+
+Default        = { Colour="#7587A6" }
+Canvas         = { Colour="#131313" }
+Number         = { Colour="#CF6A4C" }
+Escape         = { Colour="#8F9D6A" }
+String         = { Colour="#8F9D6A" }
+StringPreProc  = { Colour="#8F9D6A" }
+BlockComment   = { Colour="#777777" }
+PreProcessor   = { Colour="#777777" }
+LineNum        = { Colour="#777777" }
+Operator       = { Colour="#ffffff" }
+LineComment = BlockComment
+Interpolation  = Escape
+
+Keywords = {
+  { Colour= "#AC885B" },
+  { Colour= "#CF6A4C" },
+  { Colour= "#F9EE98" },
+  { Colour= "#8F9D6A" },
+}
