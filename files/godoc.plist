@@ -5,17 +5,15 @@
 	<key>EnvironmentVariables</key>
 	<dict>
 		<key>GOPATH</key>
-		<string>/Users/bryan/Development/go</string>
-		<key>VAR</key>
-		<string>VAL</string>
+		<string>/Users/rcolvin/gocode</string>
 	</dict>
 	<key>KeepAlive</key>
 	<false/>
 	<key>Label</key>
-	<string>smarticus.godoc</string>
+	<string>rcolvin.godoc</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/local/go/bin/godoc</string>
+		<string>/Users/rcolvin/gocode/bin/godoc</string>
 		<string>-http=:6060</string>
 		<string>-analysis=pointer</string>
 	</array>
