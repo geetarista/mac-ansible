@@ -12,6 +12,7 @@
       - name: ctags
       - name: curl
       - name: findutils
+      - name: fswatch
       - name: git
       - name: gnu-tar
       - name: go
