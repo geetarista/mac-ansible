@@ -11,6 +11,7 @@
       # - name: boot2docker
       - name: ctags
       - name: curl
+      - name: evernote
       - name: findutils
       - name: fswatch
       - name: git
