@@ -12,7 +12,6 @@
       - name: ctags
       - name: curl
       - name: entr
-      - name: evernote
       - name: findutils
       - name: fswatch
       - name: git
@@ -133,10 +132,10 @@
       - pep8
       - pyflakes
       - uncommitted
-    ruby_current_global: "{{ lookup('file', home + '/.rbenv/version') }}"
     ruby_gems:
       - jekyll
-    ruby_global: 2.1.4
+    ruby_global: 2.2.2
+    ruby_global_file: "{{ home + '/.rbenv/version' }}"
     ruby_versions:
       - "{{ ruby_global }}"
     workspace: "{{ home }}/workspace"
@@ -156,21 +155,21 @@
       homebrew: "name={{ item.name }} install_options={{ item.install_options | default('') }}"
       with_items: brew_packages
 
-    - name: cask applications
-      homebrew_cask: name={{ item }}
-      with_items: cask_applications
+    # - name: cask applications
+    #   homebrew_cask: name={{ item }}
+    #   with_items: cask_applications
 
     - name: brew linkapps
       command: brew linkapps
 
-    - name: alfred status
-      command: brew cask alfred status
-      ignore_errors: true
-      register: alfred_status
+    # - name: alfred status
+    #   command: brew cask alfred status
+    #   ignore_errors: true
+    #   register: alfred_status
 
-    - name: link alfred
-      command: brew cask alfred link
-      when: alfred_status.stdout == "==> Alfred is not linked to homebrew-cask."
+    # - name: link alfred
+    #   command: brew cask alfred link
+    #   when: alfred_status.stdout == "==> Alfred is not linked to homebrew-cask."
 
     # ssh
 
@@ -255,9 +254,13 @@
       command: rbenv install {{ item }} creates={{ home }}/.rbenv/versions/{{ item }}
       with_items: ruby_versions
 
+    - name: get current global
+      stat: path=ruby_global_file
+      register: ruby_global_current
+
     - name: set global ruby version
       command: rbenv global {{ ruby_global }}
-      when: ruby_current_global != ruby_global
+      when: ruby_global_current.stat.exists and ruby_current_global != ruby_global
 
     - name: ruby gems
       gem: name={{ item }}
@@ -282,10 +285,10 @@
 
     # os x defaults
 
-    - name: autohide dock
-      osx_defaults: domain='com.apple.dock' key='autohide' value='true'
-      tags: defaults
+    # - name: autohide dock
+    #   osx_defaults: domain='com.apple.dock' key='autohide' value='true'
+    #   tags: defaults
 
-    - name: set delete as safari back button
-      osx_defaults: domain='com.apple.safari' key='ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled' value='true'
-      tags: defaults
+    # - name: set delete as safari back button
+    #   osx_defaults: domain='com.apple.safari' key='ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled' value='true'
+    #   tags: defaults
