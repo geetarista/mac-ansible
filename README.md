@@ -6,19 +6,24 @@ How I provision my Mac with [Ansible](http://www.ansible.com/home).
 
 Just run `make`!
 
-# Other
+# Not Automated
 
-The following applications are from other sources:
+App Store:
 
 * Byword
-* Hemingway Editor
+* Caffeine
+* Evernote
+* Fantastical
 * iA Writer
 * Pixelmator
 * Sunrise
-* Textual
 * Tweetbot
 * Wunderlist
 * Fantastical
+
+Gumroad:
+
+* Hemingway Editor
 
 # License
 
