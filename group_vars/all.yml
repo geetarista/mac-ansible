@@ -1,0 +1,3 @@
+---
+home_dir: "{{ ansible_env['HOME'] }}"
+user_name: "{{ ansible_env['USER'] }}"

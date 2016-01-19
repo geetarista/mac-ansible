@@ -1,0 +1,47 @@
+---
+brew_packages:
+  - name: ack
+  - name: archey
+  - name: bazaar
+  - name: boot2docker
+  - name: ctags
+  - name: curl
+  - name: entr
+  - name: findutils
+  - name: fswatch
+  - name: git
+  - name: gnu-tar
+  - name: gpg
+  - name: go
+    install_options: cross-compile-all
+  - name: go-app-engine-64
+  - name: graphviz
+  - name: highlight
+  - name: hub
+  - name: jq
+  - name: lynis
+  - name: lua
+  - name: macvim
+    install_options: custom-icons,override-system-vim,with-cscope,with-lua,with-luajit
+  - name: mercurial
+  - name: moreutils
+  - name: ngrep
+  - name: nodejs
+  - name: python
+  - name: rbenv
+  - name: redis
+  - name: ruby-build
+  - name: s3cmd
+  - name: scons
+  - name: sqlite
+  - name: the_platinum_searcher
+  - name: the_silver_searcher
+  - name: tmux
+  - name: tree
+  - name: vim
+    install_options: override-system-vi,with-lua,with-luajit
+  - name: visionmedia-watch
+  - name: wget
+brew_taps:
+  - caskroom/versions
+  - monochromegane/pt

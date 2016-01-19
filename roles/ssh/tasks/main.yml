@@ -1,0 +1,3 @@
+---
+- name: ssh dir
+  file: path={{ home_dir }}/.ssh state=directory

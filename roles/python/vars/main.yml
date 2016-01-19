@@ -1,0 +1,7 @@
+---
+python_packages:
+  - boto
+  - glances
+  - pep8
+  - pyflakes
+  - uncommitted

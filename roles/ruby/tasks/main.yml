@@ -1,0 +1,20 @@
+---
+- name: ruby versions
+  command: rbenv install {{ item }} creates={{ home_dir }}/.rbenv/versions/{{ item }}
+  with_items: ruby_versions
+  tags: ruby
+
+- name: ruby global exists
+  stat: path=ruby_global_file
+  register: ruby_global_exists
+  tags: ruby
+
+- name: set global ruby version
+  command: rbenv global {{ ruby_global }}
+  when: ruby_global_exists.stat.exists == "False" or lookup('file', ruby_global_file) != ruby_global
+  tags: ruby
+
+- name: ruby gems
+  gem: name={{ item }}
+  with_items: ruby_gems
+  tags: ruby

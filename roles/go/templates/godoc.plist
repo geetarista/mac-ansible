@@ -5,15 +5,15 @@
 	<key>EnvironmentVariables</key>
 	<dict>
 		<key>GOPATH</key>
-		<string>/Users/rcolvin/gocode</string>
+		<string>{{ gopath }}</string>
 	</dict>
 	<key>KeepAlive</key>
 	<false/>
 	<key>Label</key>
-	<string>rcolvin.godoc</string>
+	<string>{{ user_name }}.godoc</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/rcolvin/gocode/bin/godoc</string>
+		<string>{{ gopath }}/bin/godoc</string>
 		<string>-http=:6060</string>
 		<string>-analysis=pointer</string>
 	</array>

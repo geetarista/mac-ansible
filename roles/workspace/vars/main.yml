@@ -1,0 +1,7 @@
+---
+workspace_name: workspace
+workspace_repositories:
+  - name: dotfiles
+    repo: "https://github.com/geetarista/dotfiles.git"
+  - name: vimfiles
+    repo: "https://github.com/geetarista/vimfiles.git"

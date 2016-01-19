@@ -1,0 +1,3 @@
+---
+- name: brew linkapps
+  command: brew linkapps

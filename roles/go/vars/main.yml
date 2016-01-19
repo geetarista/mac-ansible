@@ -1,0 +1,15 @@
+---
+gopath: "{{ lookup('env','GOPATH') }}"
+go_packages:
+  - github.com/bradfitz/goimports
+  - github.com/garyburd/redigo/redis
+  - github.com/golang/lint
+  - github.com/mitchellh/gox
+  - github.com/mitchellh/packer
+  - github.com/rapidloop/rtop
+  - github.com/shurcooL/Go-Package-Store
+  - github.com/smartystreets/goconvey
+  - github.com/spf13/hugo
+  - golang.org/x/tools/cmd/cover
+  - golang.org/x/tools/cmd/godoc
+  - golang.org/x/tools/cmd/vet

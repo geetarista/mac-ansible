@@ -1,0 +1,71 @@
+---
+cask_applications:
+  - anybar
+  - appcleaner
+  # - arduino
+  # - atom
+  # - authy-bluetooth
+  - bettertouchtool
+  # - bittorrent-sync
+  - broomstick
+  - caffeine
+  # - cakebrew
+  - cheatsheet
+  - daisydisk
+  # - firefox-beta
+  - flux
+  # - gifrocket
+  # - google-chrome
+  # - google-chrome-canary
+  # - google-earth
+  - gpgtools
+  # - handbrake
+  # - heroku-toolbelt
+  # - hipchat
+  # - hive
+  # - iterm2
+  # - java
+  - keyboard-cleaner
+  # - kitematic
+  # - lighttable
+  # - liteicon
+  # - mailbox
+  # - macdown
+  # - meteorologist
+  # - mplayerx
+  # - namebench
+  # - omnigraffle
+  # - origin
+  # - playonmac
+
+  # QuickLook plugins
+  # https://github.com/sindresorhus/quick-look-plugins
+  - qlcolorcode
+  - qlstephen
+  - qlmarkdown
+  - quicklook-json
+  - qlprettypatch
+  - quicklook-csv
+  - betterzipql
+  - qlimagesize
+  - webpquicklook
+  - suspicious-package
+
+  # - rdio
+  # - silverlight
+  # - skype
+  # - slack
+  # - slate
+  # - steam
+  # - the-unarchiver
+  # - torbrowser
+  # - tunnelbear
+  # - utorrent
+  # - vagrant
+  # - vimr
+  # - virtualbox
+  # - viscosity
+  # - vlc
+  # - wineskin-winery
+  # - wireshark
+  # - xscope

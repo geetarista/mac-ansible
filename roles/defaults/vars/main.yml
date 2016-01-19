@@ -1,0 +1,12 @@
+---
+defaults:
+  - name: autohide dock
+    domain: com.apple.dock
+    key: autohide 
+    type: bool
+    value: true
+  - name: set delete as safari back button
+    domain: com.apple.safari
+    key: ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled
+    type: bool
+    value: true

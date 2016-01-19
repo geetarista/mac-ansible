@@ -1,0 +1,8 @@
+---
+- name: set os x settings
+  osx_defaults:
+    domain: item.domain
+    key: item.key
+    value: item.value
+  with_items: defaults
+  tags: defaults

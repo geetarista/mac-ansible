@@ -1,0 +1,5 @@
+---
+- name: twilight theme
+  copy: src={{ item }} dest=/usr/local/opt/highlight/share/highlight/themes/
+  with_fileglob:
+    - "*.theme"

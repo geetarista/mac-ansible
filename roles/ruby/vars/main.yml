@@ -1,0 +1,7 @@
+---
+ruby_gems:
+  - jekyll
+ruby_global: 2.2.2
+ruby_global_file: "{{ home_dir + '/.rbenv/version' }}"
+ruby_versions:
+  - "{{ ruby_global }}"
