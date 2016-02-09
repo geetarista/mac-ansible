@@ -1,8 +1,10 @@
 ---
 - name: workspace
   file: path={{ home_dir }}/{{ workspace_name }} state=directory
+  tags: workspace
 
 - name: install repositories
   git: repo={{ item.repo }}
        dest={{ home_dir }}/{{ workspace_name }}/{{ item.name }}
   with_items: workspace_repositories
+  tags: workspace
