@@ -1,7 +1,7 @@
 ---
 cask_applications:
   - anybar
-  - appcleaner
+  # - appcleaner
   # - arduino
   # - atom
   # - authy-bluetooth
@@ -9,13 +9,14 @@ cask_applications:
   - bitbar
   # - bittorrent-sync
   - broomstick
-  - caffeine
-  # - cakebrew
-  - cheatsheet
-  - daisydisk
+  # - caffeine
+  - cakebrew
+  # - cheatsheet
+  # - daisydisk
   # - firefox-beta
-  - flux
+  # - flux
   # - gifrocket
+  # - github-desktop
   # - google-chrome
   # - google-chrome-canary
   # - google-earth
@@ -25,7 +26,7 @@ cask_applications:
   # - hipchat
   # - hive
   # - iterm2
-  # - java
+  - java
   - keyboard-cleaner
   # - kitematic
   # - lighttable
@@ -64,7 +65,7 @@ cask_applications:
   # - utorrent
   # - vagrant
   # - vimr
-  # - virtualbox
+  - virtualbox
   # - viscosity
   # - vlc
   # - wineskin-winery

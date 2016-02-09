@@ -1,4 +1,4 @@
 ---
-# - name: cask applications
-#   homebrew_cask: name={{ item }}
-#   with_items: cask_applications
+- name: cask applications
+  homebrew_cask: name={{ item }}
+  with_items: cask_applications
