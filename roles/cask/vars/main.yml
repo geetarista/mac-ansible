@@ -6,6 +6,7 @@ cask_applications:
   # - atom
   # - authy-bluetooth
   - bettertouchtool
+  - bitbar
   # - bittorrent-sync
   - broomstick
   - caffeine
