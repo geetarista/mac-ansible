@@ -1,0 +1,3 @@
+ulimit_file: /Library/LaunchDaemons/limit.maxfiles.plist
+ulimit_min: 524288
+ulimit_max: 524288

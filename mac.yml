@@ -9,10 +9,10 @@
 
   roles:
     - brew
-    - cask
     - defaults
     - go
     - highlight
+    - me
     - nodejs
     - python
     - ruby
