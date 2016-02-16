@@ -44,6 +44,7 @@ brew_packages:
   - name: visionmedia-watch
   - name: wget
 brew_taps:
+  - caskroom/homebrew-fonts
   - caskroom/versions
   - monochromegane/pt
   - neovim/neovim
@@ -63,6 +64,7 @@ cask_applications:
   # - daisydisk
   # - firefox-beta
   # - flux
+  - font-hack
   # - gifrocket
   # - github-desktop
   # - google-chrome
