@@ -6,5 +6,5 @@
 - name: install repositories
   git: repo={{ item.repo }}
        dest={{ home_dir }}/{{ workspace_name }}/{{ item.name }}
-  with_items: workspace_repositories
+  with_items: "{{ workspace_repositories }}"
   tags: workspace

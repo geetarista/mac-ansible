@@ -1,7 +1,7 @@
 ---
 - name: ruby versions
   command: rbenv install {{ item }} creates={{ home_dir }}/.rbenv/versions/{{ item }}
-  with_items: ruby_versions
+  with_items: "{{ ruby_versions }}"
   tags: ruby
 
 - name: ruby global exists
@@ -16,5 +16,5 @@
 
 - name: ruby gems
   gem: name={{ item }}
-  with_items: ruby_gems
+  with_items: "{{ ruby_gems }}"
   tags: ruby
