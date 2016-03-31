@@ -18,7 +18,10 @@ brew_packages:
   - name: graphviz
   - name: highlight
   - name: hub
+  - name: imagemagick
   - name: jq
+  - name: jo
+  # - name: homebrew/binary/kwm
   - name: lynis
   - name: lua
   - name: macvim
@@ -43,6 +46,7 @@ brew_packages:
     install_options: override-system-vi,with-lua,with-luajit
   - name: visionmedia-watch
   - name: wget
+  - name: zsh
 brew_taps:
   - caskroom/homebrew-fonts
   - caskroom/versions
