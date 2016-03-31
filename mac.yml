@@ -10,6 +10,7 @@
   roles:
     - brew
     - defaults
+    - dns
     - go
     - highlight
     - me
