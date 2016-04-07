@@ -2,6 +2,7 @@
 brew_packages:
   - name: ack
   - name: archey
+  - name: aria2
   - name: bazaar
   - name: boot2docker
   - name: ctags
