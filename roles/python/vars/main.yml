@@ -3,6 +3,6 @@ python_packages:
   - boto
   - glances
   - neovim
-  - pep8
+  - pycodestyle
   - pyflakes
   - uncommitted
