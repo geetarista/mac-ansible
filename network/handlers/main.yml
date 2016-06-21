@@ -1,0 +1,7 @@
+---
+- name: restart network
+  command: sudo ifconfig en0 down
+  notify: start network
+
+- name: start network
+  command: sudo ifconfig en0 up
