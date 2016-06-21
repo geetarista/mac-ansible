@@ -1,5 +1,5 @@
 ---
 dns_interfaces:
-- "Wi-Fi"
-- "Thunderbolt Ethernet 2"
-- "Display Ethernet"
+- Wi-Fi
+- Thunderbolt Ethernet 2
+- Display Ethernet
