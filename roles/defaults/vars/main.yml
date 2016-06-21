@@ -8,5 +8,5 @@ defaults:
   - name: set delete as safari back button
     domain: com.apple.safari
     key: ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled
-    type: bool
+    type: string
     value: "true"
