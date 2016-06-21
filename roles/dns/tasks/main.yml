@@ -1,4 +1,5 @@
 ---
 - name: set dns servers
-  command: "networksetup -setdnsservers {{ item }} {{ dns_servers|join(' ') }}"
+  command: "networksetup -setdnsservers '{{ item }}' {{ dns_servers|join(' ') }}"
   with_items: "{{ dns_interfaces }}"
+  tags: network

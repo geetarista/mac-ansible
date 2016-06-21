@@ -1,2 +1,5 @@
 ---
-# vars file for dns
+dns_interfaces:
+- "Wi-Fi"
+- "Thunderbolt Ethernet 2"
+- "Display Ethernet"
