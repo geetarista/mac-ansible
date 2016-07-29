@@ -27,6 +27,7 @@ brew_packages:
   - name: lua
   - name: macvim
     install_options: custom-icons,override-system-vim,with-cscope,with-lua,with-luajit
+  - name: mas
   - name: mercurial
   - name: moreutils
   - name: neovim
