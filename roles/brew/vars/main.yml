@@ -32,7 +32,6 @@ brew_packages:
   - name: moreutils
   - name: neovim
   - name: ngrep
-  - name: nodejs
   - name: python
   - name: rbenv
   - name: redis

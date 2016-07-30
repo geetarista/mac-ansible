@@ -1,4 +1,0 @@
----
-- name: npm packages
-  npm: name={{ item }} global=true
-  with_items: "{{ npm_packages }}"
