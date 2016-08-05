@@ -18,6 +18,7 @@ brew_packages:
   - name: go-app-engine-64
   - name: graphviz
   - name: highlight
+  - name: httpie
   - name: hub
   - name: imagemagick
   - name: jq
