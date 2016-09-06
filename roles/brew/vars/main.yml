@@ -17,6 +17,8 @@ brew_packages:
     install_options: cross-compile-all
   - name: go-app-engine-64
   - name: graphviz
+  - name: grep
+    install_options: --with-default-names
   - name: highlight
   - name: httpie
   - name: hub
