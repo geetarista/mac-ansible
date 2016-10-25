@@ -1,6 +1,8 @@
 ---
-- name: gocode
-  file: path={{ home_dir }}/gocode state=directory
+- name: GOPATH dir
+  file:
+    path: "{{ home_dir }}/go"
+    state: directory
   tags: go
 
 - name: go get packages
