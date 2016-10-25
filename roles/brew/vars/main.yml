@@ -33,6 +33,7 @@ brew_packages:
   - name: mas
   - name: mercurial
   - name: moreutils
+  - name: mtr
   - name: neovim
   - name: ngrep
   - name: pv
