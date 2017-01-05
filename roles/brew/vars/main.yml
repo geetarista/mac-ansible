@@ -47,6 +47,7 @@ brew_packages:
   - name: the_platinum_searcher
   - name: the_silver_searcher
   - name: tmux
+  - name: trash
   - name: tree
   - name: vim
     install_options: override-system-vi,with-lua,with-luajit
