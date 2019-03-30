@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  bazaar:
+    name: bazaar
+    state: absent

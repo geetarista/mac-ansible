@@ -1,0 +1,8 @@
+---
+homebrew_packages:
+  sed:
+    name: gnu-sed
+    state: present
+
+path_locations:
+- /usr/local/opt/gnu-sed/libexec/gnubin

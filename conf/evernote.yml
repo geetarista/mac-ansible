@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  evernote:
+    name: evernote
+    state: present

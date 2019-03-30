@@ -1,0 +1,25 @@
+---
+- name: Ensure MAS is installed.
+  homebrew:
+    name: mas
+    state: present
+
+- name: List installed MAS apps.
+  command: mas list
+  register: mas_list
+  check_mode: no
+  changed_when: false
+
+- name: install mas apps
+  command: mas install "{{ item.value.id }}"
+  with_dict: "{{ mas_apps }}"
+  when:
+  - (item.value.id | string) not in mas_list.stdout
+  - item.value.state == "present"
+
+- name: uninstall mas apps
+  command: mas uninstall "{{ item.value.id }}"
+  with_dict: "{{ mas_apps }}"
+  when:
+  - (item.value.id | string) in mas_list.stdout
+  - item.value.state == "absent"

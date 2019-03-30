@@ -1,0 +1,6 @@
+---
+mas_apps:
+  spark:
+    id: 1176895641
+    name: Spark
+    state: absent

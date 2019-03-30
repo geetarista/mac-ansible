@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  gopass:
+    name: gopass
+    state: present

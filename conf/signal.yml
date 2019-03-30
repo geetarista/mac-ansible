@@ -1,0 +1,9 @@
+---
+homebrew_cask_apps:
+  signal:
+    name: signal
+    state: present
+# homebrew_packages:
+#   signal-cli:
+#     name: signal-cli
+#     state: present

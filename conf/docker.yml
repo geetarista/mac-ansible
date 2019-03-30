@@ -1,0 +1,14 @@
+---
+homebrew_taps:
+  dive:
+    name: wagoodman/dive
+    state: present
+
+homebrew_cask_apps:
+  docker:
+    name: docker-edge
+    state: present
+homebrew_packages:
+  dive:
+    name: dive
+    state: present

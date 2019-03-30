@@ -1,0 +1,19 @@
+---
+homebrew_packages:
+  rbenv:
+    name: rbenv
+    state: present
+
+ruby_versions:
+- 2.5.3
+- 2.6.0
+
+ruby_global: 2.6.0
+
+ruby_gems:
+- name: bundler
+  state: present
+- name: fpm
+  state: present
+- name: jekyll
+  state: present

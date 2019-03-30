@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  iterm:
+    name: iterm2-beta
+    state: present

@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  awscli:
+    name: awscli
+    state: present

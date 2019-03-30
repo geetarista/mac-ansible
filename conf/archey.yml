@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  archey:
+    name: archey
+    state: present

@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  tmux:
+    name: tmux
+    state: present

@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  dropbox:
+    name: dropbox
+    state: present

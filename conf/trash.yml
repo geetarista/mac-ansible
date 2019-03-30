@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  trash:
+    name: trash
+    state: present

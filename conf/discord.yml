@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  discord:
+    name: discord
+    state: present

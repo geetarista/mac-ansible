@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  wireshark:
+    name: wireshark
+    state: present

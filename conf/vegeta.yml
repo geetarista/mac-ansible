@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  vegeta:
+    name: vegeta
+    state: present

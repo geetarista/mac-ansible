@@ -1,0 +1,22 @@
+---
+- name: populate list of shells
+  lineinfile:
+    backup: yes
+    dest: /etc/shells
+    regexp: "^{{ item.value.path }}"
+    line: "{{ item.value.path }}"
+  with_dict: "{{ shells_enabled }}"
+  when: item.value.state == "present"
+  become: yes
+  tags:
+  - shell
+
+- name: change default shell
+  shell: chsh -s {{ item.value.path }} {{ ansible_env.USER }}
+  with_dict: "{{ shells_enabled }}"
+  when:
+  - item.value.default is defined
+  - lookup('env','SHELL') != item.value.path
+  become: yes
+  tags:
+  - shell

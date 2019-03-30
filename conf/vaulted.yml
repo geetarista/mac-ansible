@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  vaulted:
+    name: vaulted
+    state: present

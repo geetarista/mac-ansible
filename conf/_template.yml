@@ -1,0 +1,24 @@
+---
+# homebrew_taps:
+#   <name>:
+#     name: <name>
+#     state: present
+
+# homebrew_packages:
+#   <name>:
+#     name: <name>
+#     state: present
+
+# homebrew_cask_apps:
+#   <name>:
+#     name: <name>
+#     state: present
+
+# mas_apps:
+#   <name>:
+#     id: <id>
+#     name: <name>
+#     state: present
+
+# path_locations:
+# - <path>

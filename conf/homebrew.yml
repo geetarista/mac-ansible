@@ -1,0 +1,6 @@
+---
+env_var:
+  homebrew_install_cleanup:
+    name: HOMEBREW_INSTALL_CLEANUP
+    value: 1
+    state: present

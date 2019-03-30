@@ -1,0 +1,7 @@
+---
+# https://github.com/dylanaraps/fff
+
+homebrew_packages:
+  fff:
+    name: fff
+    state: present

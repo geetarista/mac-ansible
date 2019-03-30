@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  gnupg:
+    name: gnupg
+    state: present

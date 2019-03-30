@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  slate:
+    name: slate
+    state: present

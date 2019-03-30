@@ -1,0 +1,14 @@
+---
+homebrew_packages:
+  kubectx:
+    name: kubectx
+    state: present
+  kubernetes-cli:
+    name: kubernetes-cli
+    state: present
+  skaffold:
+    name: skaffold
+    state: present
+  stern:
+    name: stern
+    state: present

@@ -1,0 +1,27 @@
+---
+homebrew_taps:
+  tflint:
+    name: wata727/tflint
+    state: present
+
+homebrew_packages:
+  tfenv:
+    name: tfenv
+    state: present
+  tflint:
+    name: tflint
+    state: present
+
+# homebrew_cask_apps:
+#   <name>:
+#     name: <name>
+#     state: present
+
+# mas_apps:
+#   <name>:
+#     id: <id>
+#     name: <name>
+#     state: present
+
+# path_locations:
+# - <path>

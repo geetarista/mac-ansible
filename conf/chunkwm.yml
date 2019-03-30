@@ -1,0 +1,10 @@
+---
+homebrew_taps:
+  chunkwm:
+    name: koekeishiya/formulae
+    state: present
+
+homebrew_packages:
+  chunkwm:
+    name: chunkwm
+    state: present

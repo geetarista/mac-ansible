@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  tar:
+    name: gnu-tar
+    state: present

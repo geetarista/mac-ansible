@@ -1,0 +1,6 @@
+---
+mas_apps:
+  amphetamine:
+    id: 937984704
+    name: Amphetamine
+    state: present

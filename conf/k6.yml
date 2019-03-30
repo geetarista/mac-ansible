@@ -1,0 +1,11 @@
+# https://k6.io/
+
+homebrew_taps:
+  k6:
+    name: loadimpact/k6
+    state: present
+
+homebrew_packages:
+  k6:
+    name: k6
+    state: present

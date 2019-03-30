@@ -1,0 +1,6 @@
+---
+mas_apps:
+  todoist:
+    id: 585829637
+    name: "Todoist: Organize your life"
+    state: present

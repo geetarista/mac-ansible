@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  curl:
+    name: curl
+    state: present

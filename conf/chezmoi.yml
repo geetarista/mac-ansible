@@ -1,0 +1,24 @@
+---
+homebrew_taps:
+  chezmoi:
+    name: twpayne/taps
+    state: present
+
+homebrew_packages:
+  chezmoi:
+    name: chezmoi
+    state: present
+
+# homebrew_cask_apps:
+#   <name>:
+#     name: <name>
+#     state: present
+
+# mas_apps:
+#   <name>:
+#     id: <id>
+#     name: <name>
+#     state: present
+
+# path_locations:
+# - <path>

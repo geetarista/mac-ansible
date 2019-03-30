@@ -1,0 +1,15 @@
+---
+homebrew_packages:
+  bash:
+    name: bash
+    state: present
+  bash-completion:
+    name: bash-completion@2
+    state: present
+
+shells_enabled:
+  bash:
+    name: bash
+    path: /usr/local/bin/bash
+    state: present
+    default: yes

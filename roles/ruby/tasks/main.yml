@@ -1,11 +1,14 @@
 ---
 - name: ruby versions
-  command: rbenv install {{ item }} creates={{ home_dir }}/.rbenv/versions/{{ item }}
+  command: rbenv install {{ item }}
+  args:
+    creates: "{{ home_dir }}/.rbenv/versions/{{ item }}"
   with_items: "{{ ruby_versions }}"
   tags: ruby
 
 - name: ruby global exists
-  stat: path=ruby_global_file
+  stat:
+    path: ruby_global_file
   register: ruby_global_exists
   tags: ruby
 
@@ -15,6 +18,8 @@
   tags: ruby
 
 - name: ruby gems
-  gem: name={{ item }}
+  gem:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
   with_items: "{{ ruby_gems }}"
   tags: ruby

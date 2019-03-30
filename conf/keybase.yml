@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  keybase:
+    name: keybase
+    state: present

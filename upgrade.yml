@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: local
+
+  tasks:
+  - name: upgrade homebrew packages
+    homebrew:
+      update_homebrew: yes
+      upgrade_all: yes
+
+  - name: upgrade homebrew cask packages
+    homebrew:
+      upgrade_all: yes

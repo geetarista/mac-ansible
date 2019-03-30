@@ -1,0 +1,39 @@
+---
+- name: update
+  homebrew:
+    update_homebrew: yes
+  register: brew_updated
+  changed_when: "'already up-to-date.' in brew_updated"
+  tags:
+  - brew
+  - update
+
+- name: taps
+  homebrew_tap:
+    tap: "{{ item.value.name }}"
+    state: "{{ item.value.state }}"
+  with_dict: "{{ homebrew_taps }}"
+  tags:
+  - brew
+
+- name: cask apps
+  homebrew_cask:
+    name: "{{ item.value.name }}"
+    state: "{{ item.value.state }}"
+    install_options: "{{ item.value.install_options | default(omit) }}"
+    accept_external_apps: yes # should make configuratble :weary:
+    # greedy: # upgrade casks that auto update
+  with_dict: "{{ homebrew_cask_apps }}"
+  when: homebrew_cask_apps is defined
+  tags:
+  - brew
+
+- name: homebrew packages
+  homebrew:
+    name: "{{ item.value.name }}"
+    install_options: "{{ item.value.install_options | default(omit) }}"
+    state: "{{ item.value.state }}"
+  with_dict: "{{ homebrew_packages }}"
+  when: homebrew_packages is defined
+  tags:
+  - brew

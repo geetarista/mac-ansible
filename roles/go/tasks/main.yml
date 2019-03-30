@@ -6,7 +6,7 @@
   tags: go
 
 - name: go get packages
-  command: go get {{ item }}
+  command: "go get {{ item }}"
   with_items: "{{ go_packages }}"
   ignore_errors: yes
   tags: go

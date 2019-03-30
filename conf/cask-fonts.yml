@@ -1,0 +1,4 @@
+homebrew_taps:
+  fonts:
+    name: homebrew/cask-fonts
+    state: present

@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  origin:
+    name: origin
+    state: present

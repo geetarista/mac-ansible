@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  aria2:
+    name: aria2
+    state: present

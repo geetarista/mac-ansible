@@ -1,0 +1,20 @@
+---
+homebrew_packages:
+  zsh:
+    name: zsh
+    state: present
+
+git_repos:
+  oh-my-zsh:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: ~/.oh-my-zsh
+
+shells_enabled:
+  zsh:
+    name: zsh
+    path: /usr/local/bin/zsh
+    state: present
+
+symlinked_files:
+  zsh:
+    name: zsh
