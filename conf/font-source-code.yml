@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  source-code-pro:
+    name: font-source-code-pro-for-powerline
+    state: present

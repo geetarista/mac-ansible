@@ -1,0 +1,6 @@
+---
+mas_apps:
+  bear:
+    id: 1091189122
+    name: Bear
+    state: present

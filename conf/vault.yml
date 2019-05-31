@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  vault:
+    name: vault
+    state: present

@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  lsd:
+    name: lsd
+    state: present

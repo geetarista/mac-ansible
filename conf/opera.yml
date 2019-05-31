@@ -1,0 +1,5 @@
+---
+homebrew_cask_apps:
+  opera:
+    name: opera
+    state: present

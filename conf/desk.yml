@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  desk:
+    name: desk
+    state: present

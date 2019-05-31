@@ -1,0 +1,10 @@
+---
+homebrew_taps:
+  jplot:
+    name: rs/tap
+    state: present
+
+homebrew_packages:
+  jplot:
+    name: jplot
+    state: present
