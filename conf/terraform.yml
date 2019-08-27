@@ -11,17 +11,6 @@ homebrew_packages:
   tflint:
     name: tflint
     state: present
-
-# homebrew_cask_apps:
-#   <name>:
-#     name: <name>
-#     state: present
-
-# mas_apps:
-#   <name>:
-#     id: <id>
-#     name: <name>
-#     state: present
-
-# path_locations:
-# - <path>
+  terraform_landscape:
+    name: terraform_landscape
+    state: present

@@ -1,7 +1,5 @@
 ---
 homebrew_cask_apps:
-  alfred:
-    name: alfred
+  alacritty:
+    name: alacritty
     state: present
-
-login_apps:

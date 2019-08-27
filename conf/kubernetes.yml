@@ -1,5 +1,13 @@
 ---
+homebrew_taps:
+  weaveworks:
+    name: weaveworks/tap
+    state: present
+
 homebrew_packages:
+  kops:
+    name: kops
+    state: present
   kubectx:
     name: kubectx
     state: present
@@ -11,4 +19,7 @@ homebrew_packages:
     state: present
   stern:
     name: stern
+    state: present
+  eksctl:
+    name: eksctl
     state: present

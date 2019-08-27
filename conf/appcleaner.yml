@@ -1,7 +1,6 @@
 ---
-homebrew_cask_apps:
-  alfred:
-    name: alfred
-    state: present
 
-login_apps:
+homebrew_cask_apps:
+  appcleaner:
+    name: appcleaner
+    state: present

@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  telnet:
+    name: telnet
+    state: present
