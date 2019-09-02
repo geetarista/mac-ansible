@@ -1,0 +1,8 @@
+---
+homebrew_cask_apps:
+  notational-velocity:
+    name: notational-velocity
+    state: present
+  nvalt:
+    name: nvalt
+    state: present

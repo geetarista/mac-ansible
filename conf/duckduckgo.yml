@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  ddgr:
+    name: ddgr
+    state: present
