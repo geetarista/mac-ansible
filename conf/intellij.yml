@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  intellij-idea:
+    name: intellij-idea
+    state: present

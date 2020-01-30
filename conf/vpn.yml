@@ -1,0 +1,5 @@
+---
+homebrew_packages:
+  openconnect:
+    name: openconnect
+    state: present
